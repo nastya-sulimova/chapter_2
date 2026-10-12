@@ -1,0 +1,254 @@
+- Объекты:
+    📚 Теория:
+      1. https://www.youtube.com/watch?v=kXAM_VuiBMM&ab_channel=%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%9B%D0%B0%D0%BC%D0%BA%D0%BE%D0%B2%E2%80%94FriendlyFrontend
+      2. https://learn.javascript.ru/object
+
+    💪🏼 Практика:
+      1.https://learn.javascript.ru/object#tasks
+
+------------------------------------------------------------------------------------------------------------------------------
+
+- Сравнение по ссылке и по значению
+    📚 Теория:
+      1. https://learn.javascript.ru/object-copy
+
+------------------------------------------------------------------------------------------------------------------------------
+
+- Массивы
+    📚 Теория:
+      1. https://doka-guide.vercel.app/js/arrays/
+      2. https://www.youtube.com/watch?v=n9K4P420uh0&ab_channel=%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%9B%D0%B0%D0%BC%D0%BA%D0%BE%D0%B2%E2%80%94FriendlyFrontend
+      3. https://learn.javascript.ru/array
+
+    💪🏼 Практика:
+      1. https://learn.javascript.ru/array#tasks
+      2. Создай массив из чисел от 1 до 100 (запиши значения с помощью цикла)
+      3. Напиши функцию `getAt(arr, index)`, которая возвращает элемент по индексу или `undefined`, если индекс за пределами массива
+      4. Напиши функцию `replaceAt(arr, index, value)`, которая заменяет элемент массива на указанный. Измени массив по ссылке, не создавая новый.
+      5. Напиши функцию `getLast(arr)`, которая возвращает последний элемент без метода `.at()` и без отрицательных индексов
+      6. Напиши свою реализацию функции `arrayPush(arr, value)`, которая добавляет элемент в конец массива
+      7. Напиши функцию `arrayPop(arr)`, которая удаляет и возвращает последний элемент массива
+      8. Напиши функцию `arrayShift(arr)`, которая удаляет и возвращает первый элемент, сдвигая все элементы влево
+      9. Напиши свою реализацию `arrayJoin(arr, sep)`, аналогичную `arr.join(sep)`
+      10. Напиши функцию `copyArray(arr)`, которая создаёт полную копию массива без `slice()`    
+      11. Напиши `manualSlice(arr, start, end)`, аналог `arr.slice(start, end)` (не включая `end`)
+      12. Напиши `arraysEqual(a, b)`, которая возвращает `true`, если массивы одинаковы по длине и значениям
+
+------------------------------------------------------------------------------------------------------------------------------
+
+- Продвинутая работа с объектами
+    📚 Теория:
+      1. https://www.youtube.com/watch?v=t_B7hl1W65E&t=446s&ab_channel=%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%9B%D0%B0%D0%BC%D0%BA%D0%BE%D0%B2%E2%80%94FriendlyFrontend
+
+    💪🏼 Практика:
+      1. Что выведет следующий код?
+      const a = { x: 1 };
+      const b = { x: 1 };
+      const c = a;
+      console.log(a === b);
+      console.log(a === c);
+  
+      2. Что выведет следующий код?
+      let a = { name: 'Gosha' };
+      let b = a;
+      b.name = 'Nikita'
+      console.log(a.name, b.name);
+  
+      3. Напиши функцию `countKeys`, которая возвращает количество ключей в объекте
+  
+      4. Есть объект и массив ключей. Проверь, все ли ключи из массива есть в объекте. js
+  
+      5. Перепиши доступ к вложенному значению с использованием `?.`
+          const user = { address: { city: 'London' } };
+          console.log(user.address.city);
+  
+      6. Перепиши код, используя деструктуризацию:
+          const user = { name: 'Bob', age: 30 };
+          const name = user.name;
+          const age = user.age;
+  
+      7. Что содержит rest?
+          const user = { id: 1, name: 'Tom', age: 22 };
+          const { id, ...rest } = user;
+  
+      8. Напиши функцию, которая будет выделять указанные поля и возвращать оставшиеся.
+        getRest({ a: 1, b: 2, c: 3 }, ['a']) // { b: 2, c: 3 }
+
+------------------------------------------------------------------------------------------------------------------------------
+
+- Деструктуризация, rest/spread
+    📚 Теория:
+      1. https://learn.javascript.ru/destructuring-assignment
+      2. https://www.youtube.com/watch?v=mbov4Rs0F3k
+      3. https://www.youtube.com/watch?v=qhpqykBJoz4
+      4. https://habr.com/ru/companies/selectel/articles/947666/
+    
+    📘 Практика:
+        Q1. Что будет в консоли?
+        const a = [{ n: 1 }], b = [...a];
+        b[0].n = 2;
+        console.log(a[0].n); // ?
+
+        Q2. Что будет в консоли?
+        const a = { x: 1 }, b = { x: 2, y: 3 };
+        console.log({ ...a, ...b, x: 0 }); // ?
+
+        Q3. Что будет в консоли?
+        const m = new Map([["a", 1]]);
+        console.log({ ...m }); // ?
+
+        Q4. Что будет в консоли?
+        const s = new Set([1,2,3]);
+        console.log([...s]); // 
+
+        Q5. Что будет в консоли?
+        const {a = 10, b = 20} = {a: undefined, b: null};
+        console.log(a, b);
+
+        Q6. Что будет в консоли?
+        let x = 5, y = 10;
+        ({x, y} = {x: y, y: x});
+        console.log(x, y);
+
+        Q7. Что будет в консоли?
+        const [a, ...rest] = [];
+        console.log(a, rest);
+
+        Q8. Что будет в консоли?
+        const user = {name: "Lena"};
+        const {name, age = 25} = user;
+        console.log(name, age);
+
+        Q9. Что будет в консоли?
+        const { length: size } = [1,2,3,4];
+        console.log(size);
+
+        Q10. Что будет в консоли?
+        const {p: {q = 5} = {}} = {};
+        console.log(q);
+
+        Q11. Что будет в консоли?
+        function test({a, b = a + 1}) {
+        console.log(a, b);
+        }
+        test({a: 10});
+        
+        Q12. Что будет в консоли?
+        const [ , , a = 99] = [1];
+        console.log(a);
+
+        Q13. Что будет в консоли?
+        const obj = {a: 1, b: 2};
+        const {a, b, c = a + b} = obj;
+        console.log(c);
+
+        Q14. Что будет в консоли?
+        const str = "JS";
+        const [first, second, third = "!"] = str;
+        console.log(first, second, third);
+
+        Q15. Что будет в консоли?
+        const [a = 5, b = 10] = [undefined, 20];
+        console.log(a, b);
+
+        Q16. Что будет в консоли?
+        const {x, y = 2, z = 3} = {x: 1, z: undefined};
+        console.log(x, y, z);
+
+        Q17. Что будет в консоли?
+        const [a, , [b, c]] = [1, 2, [3, 4]];
+        console.log(a, b, c);
+
+        Q18. Что будет в консоли?
+        const {name, info: {age, city}} = {name: "Eva", info: {age: 22, city: "Berlin"}};
+        console.log(name, age, city);
+
+        Q19. Что будет в консоли?
+        const arr = [1, 2];
+        const [a, b, c = 3, d = 4] = arr;
+        console.log(a, b, c, d);
+
+        Q20. Что будет в консоли?
+        const user = { id: 1, profile: { name: "Kate" } };
+        const { profile: { name }, profile } = user;
+        console.log(name, profile);
+
+        Q21. Что будет в консоли?
+        let a = 1, b = 2, c = 3;
+        ({a, b, c} = {a: 10, b: 20, c: 30});
+        console.log(a, b, c);
+
+        Q22. Что будет в консоли?
+        function getData() {
+        return [1, 2, 3];
+        }
+        const [a, , c] = getData();
+        console.log(a, c);
+
+        Q23. Что будет в консоли?
+        const [{a}, {b}] = [{a: 10}, {b: 20}];
+        console.log(a, b);
+
+        Q24. Что будет в консоли?
+        const { length } = "Hello";
+        console.log(length);
+
+------------------------------------------------------------------------------------------------------------------------------
+
+- Методы массивов
+    📚 Теория:
+      1.  https://www.youtube.com/watch?v=SjTTDZX2hIA&ab_channel=%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%9B%D0%B0%D0%BC%D0%BA%D0%BE%D0%B2%E2%80%94FriendlyFrontend
+      2. https://learn.javascript.ru/array-methods
+
+    💪🏼 Практика:
+      1. https://learn.javascript.ru/array-methods#tasks
+
+------------------------------------------------------------------------------------------------------------------------------
+
+- Мутабельность/иммутабельность
+    📚 Теория:
+      1. https://www.hackfrontend.com/ru/docs/general-questions/immunability-and-mutability
+      ⚠️ Про React не нужно читать
+
+------------------------------------------------------------------------------------------------------------------------------
+
+- Вспоминаем функции
+    📚 Теория: 
+      1.  https://www.youtube.com/watch?v=rJK0eMkI3BE&ab_channel=%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%9B%D0%B0%D0%BC%D0%BA%D0%BE%D0%B2%E2%80%94FriendlyFrontend
+      2. https://www.youtube.com/watch?v=IcgdjdeOziA&ab_channel=%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%9B%D0%B0%D0%BC%D0%BA%D0%BE%D0%B2%E2%80%94FriendlyFrontend
+      3. https://learn.javascript.ru/rest-parameters-spread-operator
+    
+    💪🏼 Практика:
+      1. Напиши функцию `square(n)`, которая возвращает квадрат числа
+      2. Напиши `function sayHi()`, вызови её до объявления. Что произойдёт?
+      3. Создай переменную `logName` и присвой ей функцию, выводящую имя. Вызови до и после объявления. Что произойдёт?
+      4. Напиши две функции: `add1` как `function`, `add2` стрелкой. Обе должны возвращать сумму двух чисел
+      5. Напиши функцию `runTwice(fn)`, которая вызывает переданную ей функцию дважды
+        const myFn = () => console.log('hello bro');
+        runTwice(myFn) // два раза выведется hello bro
+      6. Напиши функцию `repeat(n, action)`, которая вызывает `action` `n` раз         
+      7. Напиши `makeMultiplier(n)`, возвращающую функцию, которая умножает на `n`
+        const multiplier = makeMultiplier(6)
+        console.log(multiplier(5)) // 30
+        console.log(multiplier(3)) // 18
+        // ....
+
+------------------------------------------------------------------------------------------------------------------------------
+
+- Продвинутые функции #1: Область видимости
+    📚 Теория:
+      1. https://learn.javascript.ru/closure
+
+    💪🏼 Практика:
+      1. https://learn.javascript.ru/closure#tasks
+
+------------------------------------------------------------------------------------------------------------------------------
+
+- Продвинутые функции #2: Рекурсия и стек
+    📚 Теория:
+      1.  https://learn.javascript.ru/recursion
+      2. https://www.youtube.com/watch?v=QY-ZldUrvZA&ab_channel=%D0%9C%D0%B8%D1%85%D0%B0%D0%B8%D0%BB%D0%9D%D0%B5%D0%BF%D0%BE%D0%BC%D0%BD%D1%8F%D1%89%D0%B8%D0%B9
+
+    💪🏼 Практика:
+      1. https://learn.javascript.ru/recursion#tasks
+      2. Задания из видео
