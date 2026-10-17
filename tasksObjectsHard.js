@@ -36,33 +36,33 @@ a.name = b.name*/
 
 // 4. Есть объект и массив ключей. Проверь, все ли ключи из массива есть в объекте. js
 
-const user = {
-  name: "Акакий",
-  age: 15,
-  mood: "потусить бы за гаражами",
-};
+// const user = {
+//   name: "Акакий",
+//   age: 15,
+//   mood: "потусить бы за гаражами",
+// };
+
+// // const keysArr = Object.keys(user);
+// // for (const element of keysArr) {
+// //   console.log(element);
+// // }
 
 // const keysArr = Object.keys(user);
-// for (const element of keysArr) {
-//   console.log(element);
+
+// function areAllKeysInArr() {
+//   let trueCounter = 0;
+//   for (let index = 0; index < keysArr.length; index++) {
+//     for (const key in user) {
+//       if (key === keysArr[index]) {
+//         ++trueCounter;
+//       }
+//     }
+//   }
+
+//   return trueCounter === keysArr.length ? true : false;
 // }
 
-const keysArr = Object.keys(user);
-
-function areAllKeysInArr() {
-  let trueCounter = 0;
-  for (let index = 0; index < keysArr.length; index++) {
-    for (const key in user) {
-      if (key === keysArr[index]) {
-        ++trueCounter;
-      }
-    }
-  }
-
-  return trueCounter === keysArr.length ? true : false;
-}
-
-console.log(areAllKeysInArr());
+// console.log(areAllKeysInArr());
 
 // /*но вообще не уверена, что я правильно поняла суть задачи*/
 
