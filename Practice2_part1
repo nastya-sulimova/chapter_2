@@ -87,111 +87,126 @@
         Q1. Что будет в консоли?
         const a = [{ n: 1 }], b = [...a];
         b[0].n = 2;
-        console.log(a[0].n); // ?
+        console.log(a[0].n); // ? я думала 1, раз это копирование массива, но ответ 2
+        ; это потому, что spread дает поверхностное копирование? у нас, получается, вложенная структура: массив, и в нем объект
+        ; при копировании массивы стали самостоятельными элементами, но объект внутри них остался одним и тем же общим объектом
+        ; соответственно строка  b[0].n = 2; поменяла значение ключа объекта и в массиве а
 
         Q2. Что будет в консоли?
         const a = { x: 1 }, b = { x: 2, y: 3 };
-        console.log({ ...a, ...b, x: 0 }); // ?
+        console.log({ ...a, ...b, x: 0 }); // ? мой ответ {y: 3, x: 0}, в консоли {x: 0, y: 3}, но разницы нет
+        ; при объединении объектов с помощью ...spread все свойства с их значениями из этих объектов 
+        ; объединяются в один объект, при этом, если ключи повторяются, то остается только один ключ и его значение перезаписывается
+        ; последним значением из всех этих свойств
 
         Q3. Что будет в консоли?
         const m = new Map([["a", 1]]);
-        console.log({ ...m }); // ?
+        console.log({ ...m }); // ? вообще не понимаю; что такое new Map() и почему ответ - пустой объект?
 
         Q4. Что будет в консоли?
         const s = new Set([1,2,3]);
-        console.log([...s]); // 
+        console.log([...s]); // в ответе тот же массив [1,2,3], тоже не понимаю конструктор
 
         Q5. Что будет в консоли?
         const {a = 10, b = 20} = {a: undefined, b: null};
-        console.log(a, b);
+        console.log(a, b); в ответе 10 и null, а я думала 10 и 20(((
 
         Q6. Что будет в консоли?
         let x = 5, y = 10;
         ({x, y} = {x: y, y: x});
-        console.log(x, y);
+        console.log(x, y); 10 и 5, ура
 
         Q7. Что будет в консоли?
         const [a, ...rest] = [];
-        console.log(a, rest);
+        console.log(a, rest); undefined undefined
 
         Q8. Что будет в консоли?
         const user = {name: "Lena"};
         const {name, age = 25} = user;
-        console.log(name, age);
+        console.log(name, age); Lena 25
 
         Q9. Что будет в консоли?
         const { length: size } = [1,2,3,4];
-        console.log(size);
+        console.log(size); вообще не понимаю, почему ответ 4
+        ; я думала, что или 1, или вообще ошибка будет, 
+        ; потому что у нас вроде бы деструктуризация объекта, но данные для переменной берем не из объекта, а из массива
 
         Q10. Что будет в консоли?
         const {p: {q = 5} = {}} = {};
-        console.log(q);
+        console.log(q); 5, правильно, но в ответе была не уверена
 
         Q11. Что будет в консоли?
         function test({a, b = a + 1}) {
         console.log(a, b);
         }
-        test({a: 10});
+        test({a: 10}); 10 11
         
         Q12. Что будет в консоли?
         const [ , , a = 99] = [1];
-        console.log(a);
+        console.log(a); 99
 
         Q13. Что будет в консоли?
         const obj = {a: 1, b: 2};
         const {a, b, c = a + b} = obj;
-        console.log(c);
+        console.log(c); 3
 
         Q14. Что будет в консоли?
         const str = "JS";
         const [first, second, third = "!"] = str;
-        console.log(first, second, third);
+        console.log(first, second, third); J S !
 
         Q15. Что будет в консоли?
         const [a = 5, b = 10] = [undefined, 20];
-        console.log(a, b);
+        console.log(a, b); 5 20
 
         Q16. Что будет в консоли?
         const {x, y = 2, z = 3} = {x: 1, z: undefined};
-        console.log(x, y, z);
+        console.log(x, y, z); 1 2 3
 
         Q17. Что будет в консоли?
         const [a, , [b, c]] = [1, 2, [3, 4]];
-        console.log(a, b, c);
+        console.log(a, b, c); 1 3 4 
 
         Q18. Что будет в консоли?
         const {name, info: {age, city}} = {name: "Eva", info: {age: 22, city: "Berlin"}};
-        console.log(name, age, city);
+        console.log(name, age, city); Eva 22 Berlin
 
         Q19. Что будет в консоли?
         const arr = [1, 2];
         const [a, b, c = 3, d = 4] = arr;
-        console.log(a, b, c, d);
+        console.log(a, b, c, d); 1 2 3 4 
 
         Q20. Что будет в консоли?
         const user = { id: 1, profile: { name: "Kate" } };
         const { profile: { name }, profile } = user;
-        console.log(name, profile);
+        console.log(name, profile); Kate и объект {name: 'Kate'}, потому что profile - это не отдельная переменная,
+        ; а вложенный объект в объект user
 
         Q21. Что будет в консоли?
         let a = 1, b = 2, c = 3;
         ({a, b, c} = {a: 10, b: 20, c: 30});
-        console.log(a, b, c);
+        console.log(a, b, c); 10 20 30
 
         Q22. Что будет в консоли?
         function getData() {
         return [1, 2, 3];
         }
         const [a, , c] = getData();
-        console.log(a, c);
+        console.log(a, c); 1 3
 
         Q23. Что будет в консоли?
         const [{a}, {b}] = [{a: 10}, {b: 20}];
-        console.log(a, b);
+        console.log(a, b); 10 20 
 
         Q24. Что будет в консоли?
         const { length } = "Hello";
-        console.log(length);
+        console.log(length); 5, не понимаю почему ответ 5, опять в левой части объект, а в правой строка/массив
+
+        ; попробовала написать в консоли так
+        ; const { hhh } = "Hello";
+        ; console.log(hhh); получила VM31033:2 undefined
+
+        ; работает ключевое свойство length, как в примере Q9?
 
 ------------------------------------------------------------------------------------------------------------------------------
 
