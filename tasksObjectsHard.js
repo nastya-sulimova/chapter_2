@@ -134,3 +134,85 @@ Uncaught TypeError: Cannot read properties of undefined (reading '0')
 ...
 - ничего не возвращается;
 - иду спать*/
+
+/*Написать функцию клонирования объекта (глубокое клонирование) для разного уровня вложенности*/
+
+// const user = {
+//     name: "Alice",
+//     secret: "123",
+//     settings: {
+//       theme: "dark",
+//       secret: "456",
+//     },
+//   };
+
+const user = {
+  name: "Alice",
+  secret: "123",
+  settings: {
+    theme: "dark",
+    secret: {
+      city: "Pskov",
+    },
+  },
+};
+
+function deepObjClone(obj) {
+  let objCopy = {};
+  for (let key in obj) {
+    if (typeof obj[key] !== "object") {
+      objCopy[key] = obj[key];
+    } else {
+      for (let deepKey in key) {
+        objCopy[[key][deepKey]] = obj[[key][deepKey]];
+      }
+    }
+  }
+  return objCopy;
+}
+
+console.log(deepObjClone(user));
+console.log(user);
+
+/*для изначального объекта с одним уровнем вложенности сработало,
+добавила еще один уровень - вложенное свойство с городом, тоже все получилось, то есть как будто даже универсальная,
+в общем реально как structuredClone(), огонь
+
+но я не понимаю трех моментов в своей же реализации:
+1) почему 
+ for (let deepKey in key) {
+        objCopy[[key][deepKey]] = obj[[key][deepKey]];
+      }
+работает на всех уровнях? я была уверена, что дальше все сломается и для следующего уровня надо будет городить ересь
+что-то типа такой
+ for (let deepDeepKey in deepKey) {
+        objCopy[[deepKey][deepDeepKey]] = obj[[deepKey][deepDeepKey]];
+      }
+ну и так далее
+
+2) первое условие 
+(typeof obj[key] !== "object")
+легко может оказаться false, если у нас объект состоит сразу из ключа, значение которого является другим объектом.
+но почему-то, когда я игралась с функцией и тестировала разные варианты, не то что ошибки не было,
+а функция просто возвращала копию объекта без всяких проблем
+например, 
+const user = {
+    settings: {
+      theme: "dark",
+      secret: "456",
+    },
+  };
+
+  возвращается 
+
+  const objCopy = {
+    settings: {
+      theme: "dark",
+      secret: "456",
+    },
+  };
+
+3) что за свойство и значение 
+undefined: undefined 
+появляются в консоли у нового клонированного объекта?
+  */
