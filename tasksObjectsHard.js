@@ -146,33 +146,33 @@ Uncaught TypeError: Cannot read properties of undefined (reading '0')
 //     },
 //   };
 
-const user = {
-  name: "Alice",
-  secret: "123",
-  settings: {
-    theme: "dark",
-    secret: {
-      city: "Pskov",
-    },
-  },
-};
+// const user = {
+//   name: "Alice",
+//   secret: "123",
+//   settings: {
+//     theme: "dark",
+//     secret: {
+//       city: "Pskov",
+//     },
+//   },
+// };
 
-function deepObjClone(obj) {
-  let objCopy = {};
-  for (let key in obj) {
-    if (typeof obj[key] !== "object") {
-      objCopy[key] = obj[key];
-    } else {
-      for (let deepKey in key) {
-        objCopy[[key][deepKey]] = obj[[key][deepKey]];
-      }
-    }
-  }
-  return objCopy;
-}
+// function deepObjClone(obj) {
+//   let objCopy = {};
+//   for (let key in obj) {
+//     if (typeof obj[key] !== "object") {
+//       objCopy[key] = obj[key];
+//     } else {
+//       for (let deepKey in key) {
+//         objCopy[[key][deepKey]] = obj[[key][deepKey]];
+//       }
+//     }
+//   }
+//   return objCopy;
+// }
 
-console.log(deepObjClone(user));
-console.log(user);
+// console.log(deepObjClone(user));
+// console.log(user);
 
 /*для изначального объекта с одним уровнем вложенности сработало,
 добавила еще один уровень - вложенное свойство с городом, тоже все получилось, то есть как будто даже универсальная,
