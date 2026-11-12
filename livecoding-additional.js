@@ -129,8 +129,9 @@
 
 // function getOnlyStrings(arr) {
 //   let result = arr.filter((item) => {
-//     return typeof item === "string";
-//     // return typeof item === "string" || "number";   почему возвращается null
+//     // return typeof item === "string";
+//     return typeof item === "string" || typeof item === "number";
+//     //  почему возвращается null
 //   });
 //   return result;
 // }
@@ -157,20 +158,21 @@
 // //     </aside>
 
 // function removeEmptyValues(arr) {
-//   let result = [];
-//   for (let i = 0; i < arr.length; i++) {
-//     // console.log(typeof arr[i]);
-//     //почему тип null - это object?
-//     if (typeof arr[i] !== "object" || typeof arr[i] !== "undefined") {
-//       result.push(arr[i]);
-//     }
-//   }
-//   return result;
+//   // let result = [];
+//   // for (let i = 0; i < arr.length; i++) {
+//   //   // console.log(typeof arr[i]);
+//   //   //почему тип null - это object?
+//   //   if (typeof arr[i] !== "object" || typeof arr[i] !== "undefined") {
+//   //     result.push(arr[i]);
+//   //   }
+//   // }
+//   let result = [...arr].filter((item) => item !== null);
+//   let resultResult = [...result].filter((item) => item !== undefined);
+
+//   return resultResult;
 // }
 
 // console.log(removeEmptyValues(values));
-
-//не понимаю, почему остаются null и undefined
 
 //---------------------------------------------------------------------------------------------------------------------
 
@@ -196,9 +198,6 @@
 // //     </aside>
 
 // function getNumbersSum(arr) {
-//   if (arr.length === 0) {
-//     return 0;
-//   }
 //   let result = arr.reduce((sum, item) => sum + item, 0);
 //   return result;
 // }
@@ -225,9 +224,6 @@
 // //     </aside>
 
 // function getNumbersProduct(arr) {
-//   if (arr.length === 0) {
-//     return 1;
-//   }
 //   let result = arr.reduce((mult, item) => mult * item, 1);
 //   return result;
 // }
@@ -258,8 +254,8 @@
 // //     </aside>
 
 // function findFirstGreaterThanTen(arr) {
-//   let result = arr.filter((item) => item > 10);
-//   return result[0] || undefined;
+//   let result = arr.find((item) => item > 10);
+//   return result || undefined;
 // }
 
 // console.log(findFirstGreaterThanTen(numbers));
@@ -309,18 +305,17 @@
 //   if (arr.length === 0) {
 //     return true;
 //   }
-//   // arr.forEach((element) => {
-//   //   element > 0;
-//   // });
-//   // //здесь думала использовать forEach, но не получилось
-//   let trueCounter = 0;
-//   for (let i = 0; i < arr.length; i++) {
-//     if (arr[i] > 0) {
-//       trueCounter++;
-//     }
-//   }
 
-//   return trueCounter === arr.length ? true : false;
+//   // let trueCounter = 0;
+//   // for (let i = 0; i < arr.length; i++) {
+//   //   if (arr[i] > 0) {
+//   //     trueCounter++;
+//   //   }
+//   // }
+
+//   // return trueCounter === arr.length ? true : false;
+
+//   return arr.every((item) => item > 0);
 // }
 
 // console.log(areAllNumbersPositive(numbers));
@@ -366,17 +361,148 @@
 // //     </aside>
 
 // function flattenOneLevel(arr) {
-//   // let result = [];
-//   // let result = arr.map((item)=>)
+//   let result = [];
+//   // let result = arr.map((item) => item.join());
 //   // for (let i = 0; i < arr.length; i++) {
 //   //   result.push(arr[i].concat(arr[i++]));
 //   //   i--;
 //   // }
-//   let result = arr
-//     .reduce((sum, item) => sum + item)
-//     .split(",")
-//     .join("");
-//   return result.split("").map((item) => Number(item));
+
+//   // for (let i = 0; i < arr.length; i++) {
+//   //   result.push(arr.concat(arr[i]));
+//   //   // i--;
+//   // }
+
+//   // for (let i = 0; i < arr.length; i++) {
+//   //   result.push([].concat(arr[i]));
+//   //   // result.concat(arr[i]);
+//   // }
+
+//   for (let i = 0; i < arr.length; i++) {
+//     for (let b = 0; b < arr[i].length; b++) {
+//       result.push(arr[i][b]);
+//     }
+//   }
+
+//   // for (let i = 0; i < arr.length; i++) {
+//   //   console.log(arr[i].join());
+//   //   result.push(arr[i].join(' '))
+//   //   // result.push(arr[i].concat(arr[i++]));
+//   //   // i--;
+//   // }
+
+//   // let result = arr
+//   //   .reduce((sum, item) => sum + item)
+//   //   .split(",")
+//   //   .join("");
+//   // return result.split("").map((item) => Number(item));
+//   return result;
 // }
 
 // console.log(flattenOneLevel(nested));
+
+//--------------------------------------------------------------------------------------------------------------------
+
+// - Строка с разделителем
+
+//     <aside>
+//     Для отображения короткого списка иногда нужно собрать элементы в одну строку.
+// Верни строку, где соседние элементы разделены строкой `" | "`.
+
+//     ```jsx
+//     // Вход:
+// const parts = ["a", "b", "c"];
+// //     // Вызов:
+// //     const result = joinWithSeparator(parts);
+// //     // Ожидаемый результат:
+// //     const expected = "a | b | c";
+// //     </aside>
+
+// function joinWithSeparator(arr) {
+//   return arr.join(" | ");
+// }
+
+// console.log(joinWithSeparator(parts));
+
+//-----------------------------------------------------------------------------------------------------------------------
+
+// - Нормализация CSV-строки
+
+//     <aside>
+//     Из текстового поля может прийти строка со значениями через запятую, пробелами и разным регистром.
+// Верни массив строк: у каждой части убраны пробелы по краям, а буквы приведены к нижнему регистру.
+
+//     ```jsx
+//     // Вход:
+// const csv = " A , b , C ";
+// //     // Вызов:
+// //     const result = normalizeCsv(csv);
+// //     // Ожидаемый результат:
+// //     const expected = ["a", "b", "c"];
+// //     </aside>
+
+// function normalizeCsv(str) {
+//   arr = str.split(",").map((item) => item.toLowerCase().trim());
+
+//   return arr;
+// }
+
+// console.log(normalizeCsv(csv));
+
+//---------------------------------------------------------------------------------------------------------------
+
+// - Массив одинаковых значений
+
+//     <aside>
+//     Для заглушек, рейтингов или начального состояния иногда нужен массив заданной длины с одинаковым значением.
+// Верни массив длины `n`, где каждый элемент равен `value`.
+
+//     ```jsx
+//     // Вход:
+// const length = 4;
+// const value = 0;
+// //     // Вызов:
+// //     const result = createFilledArray(length, value);
+// //     // Ожидаемый результат:
+// //     const expected = [0, 0, 0, 0];
+// //     </aside>
+
+// function createFilledArray(Length, Value) {
+//   let arr = [];
+//   for (let i = 0; i < Length; i++) {
+//     arr.push(Value);
+//   }
+
+//   // let arr = [];
+//   // arr.splice(0, 0, Value*Length); сразу понимала, что можно сделать двумя вариантами, но со вторым что-то пошло не так
+
+//   return arr;
+// }
+
+// console.log(createFilledArray(length, value));
+
+//----------------------------------------------------------------------------------------------------------------------
+
+// - Сумма удвоенных неотрицательных чисел
+
+//     <aside>
+//     В аналитике бывает нужно отсеять неподходящие значения, преобразовать оставшиеся и получить один итог.
+// Убери все числа меньше `0`, каждое оставшееся число умножь на `2`, затем посчитай сумму.
+
+//     ```jsx
+//     // Вход:
+// const numbers = [5, -1, 2, -3, 4];
+// //     // Вызов:
+// //     const result = getPositiveDoubleSum(numbers);
+// //     // Ожидаемый результат:
+// //     const expected = 22;
+// //     </aside>
+
+// function getPositiveDoubleSum(arr) {
+//   return arr
+//     .filter((item) => item > 0)
+//     .map((item) => item * 2)
+//     .reduce((sum, item) => sum + item, 0);
+// }
+
+// console.log(getPositiveDoubleSum(numbers));
