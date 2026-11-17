@@ -1,0 +1,159 @@
+Практика 2!
+В этом разделе собран набор задач, которые необходимо решить на основании знаний из изученных материалов, всех знаний сейчас достаточно.
+Для решения задач необходимо создать проект на GitHub с именем js_practice_2.
+Выложить PR с решенными заданиями.
+
+    1) Каталог товаров
+    Создай **массив объектов**, где каждый объект описывает товар в интернет-магазине:
+    - `name` название товара
+    - `price` цена
+    - `category` категория
+    Напиши функцию `getTotalPriceByCategory(category)`, которая:
+    - Принимает **название категории**.
+    - Возвращает **суммарную цену** всех товаров из этой категории.
+    Используй методы массивов и объекты
+    
+    
+    2) Список пользователей
+        Создай функцию `findUserById(users, id)`, которая:
+    - Принимает **массив объектов-пользователей**.
+    - Каждый пользователь содержит `id`, `name`, `email`.
+    - Возвращает пользователя с нужным `id`.
+    Проверь, что если пользователя с таким id нет функция возвращает `null`.
+
+    
+    3) Библиотека книг
+    Создай структуру данных — **массив книг**, где каждая книга это объект:
+    - `title`
+    - `author`
+    - `genres` массив жанров
+    - `isRead` булево значение
+    Реализуй следующие функции:
+    1. `getBooksByGenre(genre)` возвращает список книг, содержащих нужный жанр.
+    2. `markAsRead(title)` находит книгу по названию и ставит `isRead = true`.
+    </aside>
+    
+    4) Поиск в дереве категорий
+    Создай структуру данных, представляющую **дерево категорий**:
+    const categories = {
+      name: "Electronics",
+      subcategories: [
+        {
+          name: "Phones",
+          subcategories: [
+            { name: "Smartphones", subcategories: [] },
+            { name: "Feature Phones", subcategories: [] }
+          ]
+        },
+        {
+          name: "Computers",
+          subcategories: [
+            { name: "Laptops", subcategories: [] },
+            { name: "Desktops", subcategories: [] }
+          ]
+        }
+      ]
+    }
+    Напиши функцию `findCategory(name, tree)`, которая:
+    - Принимает название категории и дерево
+    - Ищет нужную категорию **рекурсивно**
+    - Возвращает объект категории, если найден, иначе `null`
+    Для решения следует применить рекурсию
+    
+    
+    5) Копирование объектов
+    Создай функцию `deepClone(obj)`, которая:
+    - Принимает на вход **объект**, содержащий вложенные объекты и массивы
+    - Возвращает **глубокую копию** объекта, не связанную с оригиналом по ссылке
+    Проверь, что изменения в копии **не влияют** на оригинал
+    const original = {
+      name: "Alice",
+      settings: {
+        theme: "dark",
+        languages: ["en", "ru"]
+      }
+    };
+    const copy = deepClone(original);
+    copy.settings.theme = "light";
+    copy.settings.languages.push("fr");
+    console.log(original.settings.theme); // "dark"
+    console.log(original.settings.languages); // ["en", "ru"]
+
+    6) Что будет в консоли #1
+    let count = 10;
+    function increase() {
+      let count = 0;
+      count += 1;
+      return count;
+    }
+    console.log(increase()); // ?
+    console.log(count); // ?
+
+    7) Что будет в консоли #2
+    let message = "Hello";
+    function changeMessage() {
+      message = "Hi";
+    }
+    changeMessage();
+    console.log(message); // ?
+
+    8) Что будет в консоли #3
+    function outer() {
+      let outerVar = "I am outside!";
+            function inner() {
+        console.log(outerVar);
+      }
+      return inner;
+    }
+    let outerVar = 'Inside';
+    const func = outer();
+    func(); // ?
+
+    9) Что будет в консоли #4
+    a = 10;
+    function f() {
+        console.log(a);
+    }
+    a = 20;
+    f();
+
+    10) Преобразовать массив в объект
+    Дан массив `array`, нужно на его основе создать новый объект, у которого ключами будут строки из поля `name`, а значениями из поля `value`
+    const array = [
+        { name: 'width', value: 123 },
+        { name: 'height', value: 222 }
+        ];
+    // {width: 123, height: 222} - должно получиться из массива выше
+
+    11) Подсчёт количества товаров по категориям
+    Дан массив товаров. У каждого товара есть поля: `name` и `category`
+    const products = [
+      { name: "Phone", category: "Electronics" },
+      { name: "TV", category: "Electronics" },
+      { name: "Jeans", category: "Clothing" },
+      { name: "T-shirt", category: "Clothing" },
+      { name: "Blender", category: "Home" }
+    ];
+    Напиши функцию `countByCategory(products)`, которая возвращает объект вида:
+    {
+      Electronics: 2,
+      Clothing: 2,
+      Home: 1
+    }
+
+    12) Сумма всех значений объекта
+    Дан объект с числовыми значениями:
+    const salaries = {
+      Alice: 500,
+      Bob: 700,
+      Charlie: 300
+    };
+    Напиши функцию `getTotalSalary(obj)`, которая вернёт сумму всех зарплат.
+
+    13) Counter 
+    Решить задачу на leetcode - https://leetcode.com/problems/counter/description/?envType=study-plan-v2&envId=30-days-of-javascript
+    
+    14) 
+    Решить задачу на реализацию функции flat на BigFrontend- https://bigfrontend.dev/problem/implement-Array-prototype.flat
+ 
+Решения всех задач выкладывать за один PR (все задачи в разных папках!)
