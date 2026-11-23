@@ -20,13 +20,12 @@ const products = [
 //     ];
 
 function getProductCards(arr) {
-  let result = arr.map((item) => ({
+  return arr.map((item) => ({
     id: item.id,
     title: item.title,
     priceLabel: `$${item.price}`,
-    disabled: item.inStock,
+    disabled: item.inStock === true ? false : true,
   }));
-  return result;
 }
 
 console.log(getProductCards(products));

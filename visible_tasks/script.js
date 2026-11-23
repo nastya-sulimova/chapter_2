@@ -22,10 +22,9 @@ const tasks = [
 //     ];
 
 function getVisibleTasks(arr) {
-  let result = arr.filter(
+  return arr.filter(
     (item) => item.status === "active" && item.deleted === false
   );
-  return result;
 }
 
 console.log(getVisibleTasks(tasks));
